@@ -91,7 +91,6 @@ def deployEnv(String environment, int port) {
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "dir"
     bat "pm2 delete greetings-app-${environment} || exit 0"
-    bat "which venv\\Scripts\\python.exe"
     bat "pm2 start -n \"greetings-app-${environment}\" app.js --${port}"
 }
 
