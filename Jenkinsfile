@@ -77,36 +77,24 @@ pipeline {
     }
 }
 
-//
-// 🔧 FUNKCIJAS
-//
-
 def installDeps() {
     echo "Installing all required dependencies..."
-
-    sh """
-    rm -rf python-greetings11
-    git clone https://github.com/mtararujs/python-greetings.git
-    cd python-greetings
-    ls -la
-
-    python3 -m venv venv
-    ./venv/bin/python -m pip install -r requirements.txt
-    """
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
+    bat "dir"
 }
 
 def deployEnv(envName, port) {
-    echo "Deploying application to ${envName} environment on port ${port}..."
+    echo "Deploying application to %envName% environment on port %port%..."
 
-    sh """
-    rm -rf python-greetings
+    bat """
+    rmdir /s /q python-greetings 2>nul
     git clone https://github.com/mtararujs/python-greetings.git
     cd python-greetings
 
-    echo "Stopping existing app if running..."
-    pm2 delete greetings-app-${envName} || true
+    echo Stopping existing app if running...
+    pm2 delete greetings-app-${envName} & exit /B 0
 
-    echo "Starting application..."
+    echo Starting application...
     pm2 start app.py --name greetings-app-${envName} -- ${port}
     """
 }
@@ -114,15 +102,15 @@ def deployEnv(envName, port) {
 def testEnv(envName) {
     echo "Running tests on ${envName} environment..."
 
-    sh """
-    rm -rf course-js-api-framework
+    bat ""
+    rmdir /s /q course-js-api-framework 2>nul
     git clone https://github.com/mtararujs/course-js-api-framework.git
     cd course-js-api-framework
 
-    echo "Installing npm dependencies..."
+    echo Installing npm dependencies...
     npm install
 
-    echo "Running API tests..."
+    echo Running API tests...
     npm run greetings greetings_${envName}
     """
 }
