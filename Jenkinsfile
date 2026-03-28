@@ -88,7 +88,6 @@ def installDeps() {
 
 def deployEnv(String environment, int port) {
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "pm2 delete greetings-app-${environment} & set "errorlevel=0" "
 }
 
 def testEnv(String environment, int port) {
