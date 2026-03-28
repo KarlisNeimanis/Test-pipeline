@@ -95,5 +95,6 @@ def deployEnv(String environment, int port) {
 }
 
 def testEnv(String environment, int port) {
-
+    echo "test is ON"
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
 }
