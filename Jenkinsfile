@@ -94,7 +94,9 @@ def deployEnv(String environment, int port) {
     bat "pm2 start app.py -n \"greetings-app-${environment}\" --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${port}"
 }
 
-def testEnv(String environment, int port) {
+def testEnv(String environment) {
     echo "test is ON"
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    bat "npm isntall"
+    bat "npm run greetings greetings_${environment}"
 }
