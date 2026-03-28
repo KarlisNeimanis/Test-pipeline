@@ -14,7 +14,7 @@ pipeline {
         stage('deploy-to-dev') {
             steps {
                 script {
-                    deployEnv("dev", "7001")
+                    deployEnv("dev", 7001)
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('deploy-to-stg') {
             steps {
                 script {
-                    deployEnv("stg", "7002")
+                    deployEnv("stg", 7002)
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
         stage('deploy-to-preprod') {
             steps {
                 script {
-                    deployEnv("preprod", "7003")
+                    deployEnv("preprod", 7003)
                 }
             }
         }
@@ -62,7 +62,7 @@ pipeline {
         stage('deploy-to-prod') {
             steps {
                 script {
-                    deployEnv("prod", "7004")
+                    deployEnv("prod", 7004)
                 }
             }
         }
