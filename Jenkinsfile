@@ -113,4 +113,5 @@ def testEnv(envName) {
     echo Running API tests...
     npm run greetings greetings_${envName}
     """
+    }
 }
