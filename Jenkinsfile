@@ -85,7 +85,7 @@ def installDeps() {
     echo "Installing all required dependencies..."
 
     sh """
-    rm -rf python-greetings
+    rm -rf python-greetings11
     git clone https://github.com/mtararujs/python-greetings.git
     cd python-greetings
     ls -la
