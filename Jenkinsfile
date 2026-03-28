@@ -86,10 +86,11 @@ def installDeps() {
     bat "pip install -r requirements.txt"
 }
 
-def deployEnv(envName, port) {
-
+def deployEnv(String environment, int port) {
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
+    bat "pm2 delete greetings-app-${environment} & set "errorlevel=0""
 }
 
-def testEnv(envName) {
+def testEnv(String environment, int port) {
 
     }
