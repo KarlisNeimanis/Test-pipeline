@@ -81,6 +81,9 @@ def installDeps() {
     echo "Installing all required dependencies..."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "dir"
+    bat "python3 -m venv venv"
+    bat "venv\\Scripts\\activate"
+    bat "pip install -r requirements.txt"
 }
 
 def deployEnv(envName, port) {
